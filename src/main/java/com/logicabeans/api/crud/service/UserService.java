@@ -26,8 +26,7 @@ public class UserService implements IUserService {
 
     @Override
     public Page<User> getUsers(Pageable page) {
-        Page<User> allUsers = repo.findAll(page);
-        return allUsers;
+        return repo.findAll(page);
     }
 
     @Override
@@ -41,8 +40,7 @@ public class UserService implements IUserService {
 
     @Override
     public User addUser(User user) {
-        User savedUser = repo.save(user);
-        return savedUser;
+        return repo.save(user);
     }
 
     @Override
@@ -58,8 +56,7 @@ public class UserService implements IUserService {
     public User updateUser(User user) throws UserNotFoundException {
         Long id = user.getId();
         if (id != null) {
-            User updatedUser = repo.save(user);
-            return updatedUser;
+            return repo.save(user);
         }
         throw new UserNotFoundException("User Not found with id:" + id);
     }

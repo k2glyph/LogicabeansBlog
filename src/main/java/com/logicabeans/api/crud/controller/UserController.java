@@ -47,8 +47,7 @@ public class UserController {
     @RequestMapping(method = RequestMethod.GET, value = "/{id}")
     public ResponseEntity getUser(@PathVariable Long id) {
         try {
-            User user = service.getUser(id);
-            return new ResponseEntity((User) user, HttpStatus.OK);
+            return new ResponseEntity((User) service.getUser(id), HttpStatus.OK);
         } catch (UserNotFoundException ex) {
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         }
@@ -60,8 +59,7 @@ public class UserController {
             produces = "application/json")
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity addUser(@RequestBody User user) {
-        User addUser = service.addUser(user);
-        return new ResponseEntity((User) user, HttpStatus.OK);
+        return new ResponseEntity((User) service.addUser(user), HttpStatus.OK);
     }
 
     @ApiOperation(
@@ -72,8 +70,7 @@ public class UserController {
     public ResponseEntity updateUser(@PathVariable Long id, @RequestBody User user) {
         user.setId(id);
         try {
-            User updateUser = service.updateUser(user);
-            return new ResponseEntity((User) updateUser, HttpStatus.OK);
+            return new ResponseEntity((User) service.updateUser(user), HttpStatus.OK);
         } catch (UserNotFoundException ex) {
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         }
@@ -82,13 +79,12 @@ public class UserController {
 
     @ApiOperation(
             value = "Delete User by Id",
-            notes = "Only Delete if user exists",
+            notes = "Only Delete event happen if user exists",
             produces = "application/json")
     @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
     public ResponseEntity deleteUser(@PathVariable Long id) {
         try {
-            User deleteUser = service.deleteUser(id);
-            return new ResponseEntity((User) deleteUser, HttpStatus.OK);
+            return new ResponseEntity((User) service.deleteUser(id), HttpStatus.OK);
         } catch (UserNotFoundException ex) {
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         }

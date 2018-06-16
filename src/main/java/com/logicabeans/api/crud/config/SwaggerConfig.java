@@ -35,14 +35,13 @@ public class SwaggerConfig {
     }
 
     private ApiInfo metaInfo() {
-        ApiInfo apiInfo = new ApiInfo(
+        return new ApiInfo(
                 "User Crud Api",
                 "Documentation of Project User Crud API",
                 "1.0",
                 "Terms of service",
                 new Contact("Dinesh Katwal", "https://k2glyph.github.io", "medineshkatwal@gmail.com"), // author
                 "Open Source", "Open Source Any one is allow to modified and distribute");
-        return apiInfo;
     }
 
 }
